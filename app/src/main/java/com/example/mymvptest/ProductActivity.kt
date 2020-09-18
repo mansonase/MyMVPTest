@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mymvptest.api.ProductAPI
 import com.example.mymvptest.api.ProductResponse
@@ -50,11 +51,17 @@ class ProductActivity: AppCompatActivity(),ProductContract.IProductView,View.OnC
 
         val priceTotal=priceSingle*(productItems.text.toString().toInt())
         totalPrice.text= priceTotal.toString()
+
         Toast.makeText(this,"Congrats!!!",Toast.LENGTH_SHORT).show()
     }
 
     override fun onBuyFail() {
-        Toast.makeText(this,"you can't buy more than 10 items, you can't! ",Toast.LENGTH_SHORT).show()
+
+        val builder=AlertDialog.Builder(this)
+        builder.setMessage("Failed").setTitle("Error")
+        builder.show()
+
+        //Toast.makeText(this,"you can't buy more than 10 items, you can't! ",Toast.LENGTH_SHORT).show()
     }
 
 

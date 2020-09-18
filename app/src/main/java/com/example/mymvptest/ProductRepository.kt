@@ -3,7 +3,6 @@ package com.example.mymvptest
 
 import android.util.Log
 import com.example.mymvptest.api.IProductAPI
-import com.example.mymvptest.api.ProductAPI
 import com.example.mymvptest.api.ProductResponse
 
 
@@ -18,7 +17,7 @@ interface IProductRepository{
         fun onBuyResult(isSuccess:Boolean)
     }
 }
-class ProductRepository(private val productAPI: ProductAPI):IProductRepository {
+class ProductRepository(private val productAPI: IProductAPI):IProductRepository {
 
 
     override fun getProduct(productId: String, loadProductCallback: IProductRepository.LoadProductCallback) {
